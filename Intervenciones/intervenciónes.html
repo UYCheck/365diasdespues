@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="jquery-1.12.0.min.js"></script>
+	<script type="text/javascript" src="dist/Chart.bundle.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		
+		var datos = {
+			labels : ["Mayo 2016",],
+			datasets : [{
+				label : "Intendencia de Soriano",
+				backgroundColor : "rgba(220,220,220,0.5)",
+				data : [76]
+			},
+			{
+
+				label : "MEVIR",
+				backgroundColor : "rgba(151,187,205,0.5)",
+				data : [16]
+			},
+			{
+
+				label : "FPI - BHU",
+				backgroundColor : "rgba(151,187,205,0.5)",
+				data : [24]
+			},
+			{
+				label : "MTOP",
+				backgroundColor : "rgba(151,100,205,0.5)",
+				data : [97]
+			}
+			]
+		};
+
+
+		var canvas = document.getElementById('chart').getContext('2d');
+		window.bar = new Chart(canvas, {
+			type : "bar",
+			data : datos,
+			options : {
+				elements : {
+					rectangle : {
+						borderWidth : 1,
+						borderColor : "rgb(0,255,0)",
+						borderSkipped : 'bottom'
+					}
+				},
+				responsive : true,
+				title : {
+					display : true,
+					text : "Total de intervenciones en Dolores"
+				}
+			}
+		});
+
+		function getRandom(){
+			return Math.round(Math.random() * 100);
+		}
+
+
+	});
+	</script>
+</head>
+<body>
+	<div id="canvas-container" style="width:50%;">
+		<canvas id="chart" width="500" height="350"></canvas>
+	</div>
+</body>
+</html>
